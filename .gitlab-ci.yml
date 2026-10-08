@@ -1,0 +1,20 @@
+image: mcr.microsoft.com/playwright:v1.58.2-noble
+
+stages:
+  - test
+
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"'
+    - when: never
+
+playwright-tests:
+  stage: test
+  script:
+    - npm ci
+    - npx playwright test
+  artifacts:
+    when: always
+    paths:
+      - playwright-report/
+    expire_in: 1 week
