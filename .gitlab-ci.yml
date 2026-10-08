@@ -1,20 +1,16 @@
-image: mcr.microsoft.com/playwright:v1.58.2-noble
-
 stages:
   - test
 
-workflow:
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"'
-    - when: never
-
 playwright-tests:
+  image: mcr.microsoft.com/playwright:v1.45.0-jammy
   stage: test
   script:
     - npm ci
-    - npx playwright test
+    - npx playwright install --with-deps
+    - npx playwright test --reporter=html
   artifacts:
-    when: always
     paths:
-      - playwright-report/
+      - playwright-report
     expire_in: 1 week
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
