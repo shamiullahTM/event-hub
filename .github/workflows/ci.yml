@@ -34,11 +34,11 @@ on:
   workflow_call:
     secrets:
       SERVER_HOST:
-        required: true
+        required: false
       SERVER_USER:
-        required: true
+        required: false
       SERVER_SSH_KEY:
-        required: true
+        required: false
 
 # Cancel any in-progress run for the same branch when a new push arrives.
 # This avoids wasting runner minutes on outdated commits.
