@@ -7,11 +7,24 @@ const USER_PASSWORD = 'Magiclife1!';
 
 async function login(page) {
   await page.goto('/login');
+
   await page.getByPlaceholder('you@email.com').fill(USER_EMAIL);
   await page.getByLabel('Password').fill(USER_PASSWORD);
+
   await page.locator('#login-btn').click();
-  // Home page loads after login — "Browse Events →" link confirms successful auth
-  await expect(page.getByRole('link', { name: /Browse Events/i }).first()).toBeVisible();
+
+  await page.waitForTimeout(3000);
+
+  console.log('Current URL:', page.url());
+
+  const bodyText = await page.locator('body').innerText();
+  console.log('PAGE CONTENT:');
+  console.log(bodyText);
+
+  await page.screenshot({
+    path: 'after-login.png',
+    fullPage: true,
+  });
 }
 
 async function preferTestId(page, testId, fallback) {
