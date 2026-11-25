@@ -11,7 +11,7 @@ const testUsers = [
 // 3 static (admin) events — always visible to all users, seats never decrement
 const staticEvents = [
   {
-    title:          'World Tech Summit',
+    title:          'World Tech Summit 2026',
     description:    'A premier technology conference bringing together 500+ industry leaders, startup founders, and engineers for two days of keynotes, workshops, and networking. Topics include AI/ML, cloud infrastructure, DevSecOps, and the future of the Indian tech ecosystem.',
     category:       'Conference',
     venue:          'Hyderabad, Hitech city',
