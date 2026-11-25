@@ -176,6 +176,7 @@ jobs:
 
       # ── Configure SSH access ──────────────────────────────────────────────────
       - name: Configure SSH access
+        if: ${{ secrets.SERVER_HOST != '' }}
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.SERVER_SSH_KEY }}" > ~/.ssh/deploy_key
