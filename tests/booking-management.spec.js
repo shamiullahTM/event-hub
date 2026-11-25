@@ -11,7 +11,7 @@ async function login(page) {
   await page.getByLabel('Password').fill(USER_PASSWORD);
   await page.locator('#login-btn').click();
   // Home page loads after login — "Browse Events →" link confirms successful auth
-  await expect(page.getByRole('link', { name: /Browse Events 2026/i }).first()).toBeVisible();
+  await expect(page.getByRole('link', { name: /Browse Events/i }).first()).toBeVisible();
 }
 
 async function preferTestId(page, testId, fallback) {
